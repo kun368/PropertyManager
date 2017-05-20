@@ -40,4 +40,14 @@ public class AdminUser {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return "AdminUser{" +
+                "adminId=" + adminId +
+                ", adminName='" + adminName + '\'' +
+                ", adminPassword='" + adminPassword + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

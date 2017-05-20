@@ -4,11 +4,11 @@ import com.sdust.model.AdminUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by zhangzhengkun on 2017/5/20.
@@ -19,10 +19,27 @@ public class AdminUserDao {
     @Autowired
     private JdbcTemplate jdbc;
 
-    public void test() {
-        System.out.println("=========");
-        SqlRowSet rowSet = jdbc.queryForRowSet("SELECT 1");
-        System.out.println("=========");
+    public AdminUser findUser(String username) {
+        List<AdminUser> query = jdbc.query("SELECT * FROM adminUser WHERE adminName = ?",
+                new AdminUserRowMapper(), username);
+        if (query != null && !query.isEmpty())
+            return query.get(0);
+        return null;
+    }
+
+    public void addUser(String username, String password, String email) {
+        jdbc.update("INSERT INTO adminuser(adminName, adminPassword, email) VALUE (?, ?, ?)",
+                username, password, email);
+    }
+
+    public void modifyPassword(String username, String newPassword) {
+        jdbc.update("UPDATE adminuser SET adminPassword = ? WHERE adminName = ?",
+                newPassword, username);
+    }
+
+    public void modifyEmail(String username, String newEmail) {
+        jdbc.update("UPDATE adminuser SET email = ? WHERE adminName = ?",
+                newEmail, username);
     }
 
     public class AdminUserRowMapper implements RowMapper<AdminUser> {
