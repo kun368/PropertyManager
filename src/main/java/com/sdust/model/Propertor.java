@@ -10,6 +10,10 @@ public class Propertor {
     private String prPhone;
     private String prIdNumber;
 
+    public void setPropertorId(int propertorId) {
+        this.propertorId = propertorId;
+    }
+
     public int getPropertorId() {
         return propertorId;
     }

@@ -13,6 +13,6 @@ public class MainView {
     @Autowired private AdminUserDao adminUserDao;
 
     public void run() {
-        adminUserDao.test();
+        //adminUserDao.test();
     }
 }

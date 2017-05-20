@@ -1,5 +1,6 @@
 package com.sdust.model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 /**
@@ -12,9 +13,13 @@ public class Complanint {
         return complanintId;
     }
 
+    public void setComplanintId(int complanintId) {
+        this.complanintId = complanintId;
+    }
+
     private int propertorId;
     private String comDetail;
-    private LocalDate comDate;
+    private Date comDate;
     private String solveState;
     public int getPropertorId() {
         return propertorId;
@@ -32,11 +37,11 @@ public class Complanint {
         this.comDetail = comDetail;
     }
 
-    public LocalDate getComDate() {
+    public Date getComDate() {
         return comDate;
     }
 
-    public void setComDate(LocalDate comDate) {
+    public void setComDate(Date comDate) {
         this.comDate = comDate;
     }
 

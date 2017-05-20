@@ -1,5 +1,6 @@
 package com.sdust.model;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 /**
@@ -10,7 +11,11 @@ public class Payment {
     private int houseId;
     private int payTypeId;
     private double payAmount;
-    private LocalDateTime payDate;
+    private Date payDate;
+
+    public void setPaymentId(int paymentId) {
+        this.paymentId = paymentId;
+    }
 
     public int getPaymentId() {
         return paymentId;
@@ -40,11 +45,11 @@ public class Payment {
         this.payAmount = payAmount;
     }
 
-    public LocalDateTime getPayDate() {
+    public Date getPayDate() {
         return payDate;
     }
 
-    public void setPayDate(LocalDateTime payDate) {
+    public void setPayDate(Date payDate) {
         this.payDate = payDate;
     }
 }

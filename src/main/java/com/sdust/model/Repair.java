@@ -1,6 +1,7 @@
 package com.sdust.model;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2017/5/20.
@@ -8,10 +9,14 @@ import java.time.LocalDate;
 public class Repair {
     private int repairId;
     private int houseId;
-    private LocalDate repairdata;
+    private Date repairdata;
     private String repairState;
     private  int repairManId;
     private String repairDetail;
+
+    public void setRepairId(int repairId) {
+        this.repairId = repairId;
+    }
 
     public int getRepairId() {
         return repairId;
@@ -24,11 +29,11 @@ public class Repair {
         this.houseId = houseId;
     }
 
-    public LocalDate getRepairdata() {
+    public Date getRepairdata() {
         return repairdata;
     }
 
-    public void setRepairdata(LocalDate repairdata) {
+    public void setRepairdata(Date repairdata) {
         this.repairdata = repairdata;
     }
 

@@ -7,6 +7,10 @@ public class PaymentType {
     private  int payTypeId;
     private  String payType;
 
+    public void setPayTypeId(int payTypeId) {
+        this.payTypeId = payTypeId;
+    }
+
     public int getPayTypeId() {
         return payTypeId;
     }
