@@ -13,6 +13,10 @@ public class AdminUser {
         return adminId;
     }
 
+    public void setAdminId(int adminId) {
+        this.adminId = adminId;
+    }
+
     public String getAdminName() {
         return adminName;
     }
