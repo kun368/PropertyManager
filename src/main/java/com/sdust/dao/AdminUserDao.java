@@ -18,6 +18,5 @@ public class AdminUserDao {
         System.out.println("=========");
         SqlRowSet rowSet = jdbc.queryForRowSet("SELECT 1");
         System.out.println("=========");
-        System.out.println(rowSet.getInt(1));
     }
 }
