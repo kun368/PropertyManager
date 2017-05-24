@@ -52,9 +52,8 @@ public class AdminUser {
 
     @Override
     public String toString() {
-        return "  " + adminId +
-                "  " + adminName +
-                "  " + adminPassword +
-                " " + email+"/n";
+        return "    " + adminName +
+                "    " + adminPassword +
+                "    " + email+"/n";
     }
 }
