@@ -19,14 +19,23 @@ public class AdminUserDao {
     @Autowired
     private JdbcTemplate jdbc;
 
-    public AdminUser findUser(String username) {
-        List<AdminUser> query = jdbc.query("SELECT * FROM adminUser WHERE adminName = ?",
-                new AdminUserRowMapper(), username);
+    public AdminUser findUser(String username,String password) {
+        List<AdminUser> query = jdbc.query("SELECT * FROM adminUser WHERE adminName = ? AND adminPassword = ?",
+                new AdminUserRowMapper(), username,password);
         if (query != null && !query.isEmpty())
             return query.get(0);
         return null;
     }
-
+    public List<AdminUser> allUser()
+    {
+        List<AdminUser> query=jdbc.query("SELECT * FROM  adminUser",new AdminUserRowMapper());
+        if(query!=null&&!query.isEmpty())
+        {
+            return query;
+        }
+        else
+            return null;
+    }
     public void addUser(String username, String password, String email) {
         jdbc.update("INSERT INTO adminuser(adminName, adminPassword, email) VALUE (?, ?, ?)",
                 username, password, email);
@@ -50,6 +59,7 @@ public class AdminUserDao {
             adminUser.setAdminName(rs.getString("adminName"));
             adminUser.setAdminPassword(rs.getString("adminPassword"));
             adminUser.setEmail(rs.getString("email"));
+            adminUser.setUserType(rs.getInt("userType"));
             return adminUser;
         }
     }

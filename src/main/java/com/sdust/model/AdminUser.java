@@ -8,6 +8,15 @@ public class AdminUser {
     private String adminName;
     private  String adminPassword;
     private  String email;
+    private  int userType;
+
+    public int getUserType() {
+        return userType;
+    }
+
+    public void setUserType(int userType) {
+        this.userType = userType;
+    }
 
     public int getAdminId() {
         return adminId;
@@ -43,11 +52,9 @@ public class AdminUser {
 
     @Override
     public String toString() {
-        return "AdminUser{" +
-                "adminId=" + adminId +
-                ", adminName='" + adminName + '\'' +
-                ", adminPassword='" + adminPassword + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "  " + adminId +
+                "  " + adminName +
+                "  " + adminPassword +
+                " " + email+"/n";
     }
 }
