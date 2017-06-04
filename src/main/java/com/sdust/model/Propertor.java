@@ -49,4 +49,14 @@ public class Propertor {
     public void setPrIdNumber(String prIdNumber) {
         this.prIdNumber = prIdNumber;
     }
+
+    @Override
+    public String toString() {
+        return "Propertor{" +
+                "Name='" + prName + '\'' +
+                ", Sex='" + prSex + '\'' +
+                ", Phone='" + prPhone + '\'' +
+                ", IdNumber='" + prIdNumber + '\'' +
+                '}';
+    }
 }

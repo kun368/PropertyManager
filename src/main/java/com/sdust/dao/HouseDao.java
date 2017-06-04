@@ -3,6 +3,7 @@ package com.sdust.dao;
 import com.sdust.model.Complanint;
 import com.sdust.model.House;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,6 +11,7 @@ import java.sql.SQLException;
 /**
  * Created by Administrator on 2017/5/20.
  */
+@Repository
 public class HouseDao {
 
     public class HouseRowMapper implements RowMapper<House> {

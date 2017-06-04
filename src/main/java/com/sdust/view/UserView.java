@@ -14,85 +14,80 @@ import java.util.Scanner;
  */
 @Component
 public class UserView {
-    @Autowired private AdminUserDao adminUserDao;
-    @Autowired private MainView mainView;
 
-    public void run()
-    {
-        Scanner sc=new Scanner(System.in);
+    @Autowired private AdminUserDao adminUserDao;
+
+    public void run() {
         userSyso();
-        int num=sc.nextInt();
-        switch (num)
-        {
-            case 1:allUser();break;
-            case 2:addUser();break;
-            case 3:modifyUser();break;
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        switch (num) {
+            case 1:
+                allUser();
+                break;
+            case 2:
+                addUser();
+                break;
+            case 3:
+                modifyUser();
+                break;
             case 0:
-                mainView.mainControl();
                 break;
         }
-        sc.close();
     }
-    public void allUser()
-    {
-        List<AdminUser> query=adminUserDao.allUser();
+
+    public void allUser() {
+        List<AdminUser> query = adminUserDao.allUser();
         System.out.println("|    用户名    |    密码    |    邮箱    |");
-        for(int i=0;i<query.size();i++)
-        {
+        for (int i = 0; i < query.size(); i++) {
             System.out.println(query.get(i).toString());
         }
         run();
-
     }
-    public void addUser()
-    {
-        Scanner sc=new Scanner(System.in);
+
+    public void addUser() {
+        Scanner sc = new Scanner(System.in);
         System.out.print("设置用户名：");
-        String username=sc.nextLine();
+        String username = sc.nextLine();
         System.out.print("设置密码：");
-        String password=sc.nextLine();
+        String password = sc.nextLine();
         System.out.print("设置邮箱：");
-        String email=sc.nextLine();
+        String email = sc.nextLine();
         try {
-            adminUserDao.addUser(username,password,email);
+            adminUserDao.addUser(username, password, email);
         } catch (Exception e) {
             System.err.println("添加新用户失败");
             System.err.println(e.getMessage());
-        }
-        finally {
+        } finally {
             run();
         }
-        sc.close();
     }
-    public void modifyUser()
-    {
-        Scanner sc=new Scanner(System.in);
+
+    public void modifyUser() {
+        Scanner sc = new Scanner(System.in);
         System.out.println("输入要修改的用户名");
-        String username=sc.nextLine();
+        String username = sc.nextLine();
         System.out.println("1.修改密码");
         System.out.println("2.修改邮箱");
         System.out.println("0.返回上一层");
-        int num=sc.nextInt();
-        if(num==1) {
+        int num = sc.nextInt();
+        if (num == 1) {
             System.out.print("新密码：");
-            String newpassword=sc.nextLine();
+            String newpassword = sc.nextLine();
             try {
-                adminUserDao.modifyPassword(username,newpassword);
+                adminUserDao.modifyPassword(username, newpassword);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.err.println("修改密码失败");
                 System.err.println(e.getMessage());
-            }
-            finally {
+            } finally {
                 run();
             }
-        }
-        else if(num==2)
-        {
+        } else if (num == 2) {
             System.out.print("新邮箱：");
-            String newemail=sc.nextLine();
+            String newemail = sc.nextLine();
             try {
-                adminUserDao.modifyPassword(username,newemail);
+                adminUserDao.modifyPassword(username, newemail);
             } catch (Exception e) {
                 System.err.println("修改邮箱失败");
                 System.err.println(e.getMessage());
@@ -101,10 +96,9 @@ public class UserView {
             }
 
         }
-        sc.close();
     }
-    public void userSyso()
-    {
+
+    public void userSyso() {
         System.out.println("-----------------------");
         System.out.println("1.查看当前所有用户信息");
         System.out.println("2.添加新的用户");

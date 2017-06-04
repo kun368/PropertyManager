@@ -13,17 +13,20 @@ import java.util.Scanner;
 
 @Component
 public class MainView {
+
     @Autowired private AdminUserDao adminUserDao;
     @Autowired private UserView userView;
+    @Autowired private ProprietorView proprietorView;
     AdminUser user;
+
     public void run() {
-        Scanner sc=new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.print("用户名：");
-        String username=sc.nextLine();
+        String username = sc.nextLine();
         System.out.print("密码：");
-        String password=sc.nextLine();
-        user=adminUserDao.findUser(username,password);
-        while(user==null) {
+        String password = sc.nextLine();
+        user = adminUserDao.findUser(username, password);
+        while (user == null) {
             System.out.println("用户不存在或者密码错误,请重新输入");
             System.out.print("用户名：");
             username = sc.nextLine();
@@ -33,32 +36,37 @@ public class MainView {
         }
         System.out.println("登录成功");
         mainControl();
-        sc.close();
     }
-    public void mainControl()
-    {
-        Scanner sc=new Scanner(System.in);
-        if(user.getUserType()==0)
-        {
-            mainItemSyso();
-            int num=sc.nextInt();
-            switch (num)
-            {
-                case 1:
-                    userView.run();
-                    break;
-                case 2:break;
-                case 3:break;
-                case 4:break;
-                case 5:break;
-                case 6:break;
-                case 0:break;
+
+    public void mainControl() {
+        if (user.getUserType() == 0) {
+            while (true) {
+                mainItemSyso();
+                Scanner sc = new Scanner(System.in);
+                int num = sc.nextInt();
+                switch (num) {
+                    case 1:
+                        userView.run();
+                        break;
+                    case 2:
+                        proprietorView.run();
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 0:
+                        return;
+                }
             }
         }
-        sc.close();
     }
-    public void mainItemSyso()
-    {
+
+    public void mainItemSyso() {
         System.out.println("===============");
         System.out.println("1.管理系统用户");
         System.out.println("2.管理业主信息");

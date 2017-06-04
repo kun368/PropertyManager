@@ -2,6 +2,7 @@ package com.sdust.dao;
 
 import com.sdust.model.Complanint;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +10,7 @@ import java.sql.SQLException;
 /**
  * Created by Administrator on 2017/5/20.
  */
+@Repository
 public class ComplanintDao {
 
     public  class ComplanintRowMapper implements RowMapper<Complanint> {
