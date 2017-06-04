@@ -72,4 +72,17 @@ public class House {
     public void setHouseArea(double houseArea) {
         this.houseArea = houseArea;
     }
+
+    @Override
+    public String toString() {
+        return "House{" +
+                "buildingNo=" + buildingNo +
+                ", unitNo=" + unitNo +
+                ", houseNo=" + houseNo +
+                ", prpertorId=" + prpertorId +
+                ", sealState='" + sealState + '\'' +
+                ", houseStyle='" + houseStyle + '\'' +
+                ", houseArea=" + houseArea +
+                '}';
+    }
 }

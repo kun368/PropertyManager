@@ -17,6 +17,7 @@ public class MainView {
     @Autowired private AdminUserDao adminUserDao;
     @Autowired private UserView userView;
     @Autowired private ProprietorView proprietorView;
+    @Autowired private HouseView houseView;
     AdminUser user;
 
     public void run() {
@@ -52,6 +53,7 @@ public class MainView {
                         proprietorView.run();
                         break;
                     case 3:
+                        houseView.run();
                         break;
                     case 4:
                         break;

@@ -30,6 +30,7 @@ public class PropertorDao {
                 propertor.getPrIdNumber());
     }
 
+
     public class PropertorRowMapper implements RowMapper<Propertor> {
 
         @Override

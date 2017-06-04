@@ -4,6 +4,7 @@ import com.sdust.dao.PropertorDao
 import com.sdust.model.Propertor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 
 /**
  * 业主管理视图
@@ -25,7 +26,7 @@ open class ProprietorView(
     fun showAll() =
         propertorDao.findAll()?.forEach { println(it) }
 
-    fun add() {
+    open fun add() {
         val cur = Propertor()
         print("输入业主姓名：")
         cur.prName = readLine()
@@ -37,8 +38,9 @@ open class ProprietorView(
         cur.prIdNumber = readLine()
         try {
             propertorDao.add(cur)
+            println("添加新业主信息成功！")
         } catch (e: Exception) {
-            System.err.println("添加新用户失败")
+            System.err.println("添加新业主失败...")
             System.err.println(e.message)
         }
     }

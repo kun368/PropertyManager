@@ -9,23 +9,25 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Scanner;
 
 @SpringBootApplication
-public class Propertymanager2Application implements CommandLineRunner{
+public class Propertymanager2Application implements CommandLineRunner {
 
-	@Autowired private MainView mainView;
+    @Autowired
+    private MainView mainView;
 
-	public static void main(String[] args) {
-		SpringApplication.run(Propertymanager2Application.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Propertymanager2Application.class, args);
+    }
 
-	@Override
-	public void run(String... strings) throws Exception {
-		System.err.println("欢迎使用小区物业管理系统！");
-		System.err.println("请选择下述功能，并输入功能序号使用！");
-		System.out.println("请先登录！");
-		try {
+    @Override
+    public void run(String... strings) throws Exception {
+        System.err.println("欢迎使用小区物业管理系统！");
+        System.err.println("请选择下述功能，并输入功能序号使用！");
+        System.err.println("请先登录！");
+        try {
             mainView.run();
         } catch (Exception e) {
+            e.printStackTrace();
             System.err.println("操作有误，小区物业管理系统退出...");
         }
-	}
+    }
 }
